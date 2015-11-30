@@ -55,20 +55,20 @@
 
 <meta name="description" content="Be a good girl!!!">
 <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
+<meta property="og:title" content="����">
 <meta property="og:url" content="http://yoursite.com/categories/index.html">
 <meta property="og:site_name" content="Ucan 的个人博客">
 <meta property="og:description" content="Be a good girl!!!">
-<meta property="og:updated_time" content="2015-11-28T06:19:36.835Z">
+<meta property="og:updated_time" content="2015-11-30T02:23:56.605Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
+<meta name="twitter:title" content="����">
 <meta name="twitter:description" content="Be a good girl!!!">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     sidebar: 'post',
     motion: true
   };
@@ -106,13 +106,6 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta custom-logo">
-  
-    <div class="site-meta-headline">
-      <a>
-        <img class="custom-logo-image" src="/images/me.jpg"
-             alt="Ucan 的个人博客"/>
-      </a>
-    </div>
   
 
   <div class="custom-logo-site-title">
@@ -179,6 +172,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            menu.guestbook
+          </a>
+        </li>
+      
 
       
       
@@ -215,10 +218,13 @@
 
         
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
         
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="categories/index.html" data-title="分类" data-url="http://yoursite.com/categories/index.html"></div>
+  <div class="ds-thread" data-thread-key="categories/index.html" data-title="����" data-url="http://yoursite.com/categories/index.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -376,10 +382,19 @@ var duoshuoQuery = {short_name:"uwcan"};
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
-
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script type="text/javascript">
+      jQuery(function() {          
+          jQuery("#posts img").lazyload({
+            placeholder:"http://www.arao.me/loading.gif",
+              effect:"fadeIn"
+            });
+          });
+  </script>
 
 
       </div>

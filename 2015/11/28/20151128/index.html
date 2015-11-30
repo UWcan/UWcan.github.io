@@ -53,23 +53,24 @@
 
 
 
-<meta name="description" content="添加图片的方法：">
+<meta name="description" content="添加图片的方法：图片为：{ImgCap}{/ImgCap}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我终于有自己的博客啦">
 <meta property="og:url" content="http://yoursite.com/2015/11/28/20151128/index.html">
 <meta property="og:site_name" content="Ucan 的个人博客">
-<meta property="og:description" content="添加图片的方法：">
-<meta property="og:image" content="http://yoursite.com/-/images/top-img.jpg -/images/top-img-2.jpg">
-<meta property="og:updated_time" content="2015-11-28T09:35:41.910Z">
+<meta property="og:description" content="添加图片的方法：图片为：{ImgCap}{/ImgCap}">
+<meta property="og:image" content="http://yoursite.com/images/top-img.jpg">
+<meta property="og:image" content="http://yoursite.com/images/top-img-2.jpg">
+<meta property="og:updated_time" content="2015-11-30T02:54:04.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我终于有自己的博客啦">
-<meta name="twitter:description" content="添加图片的方法：">
+<meta name="twitter:description" content="添加图片的方法：图片为：{ImgCap}{/ImgCap}">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     sidebar: 'post',
     motion: true
   };
@@ -101,13 +102,6 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta custom-logo">
-  
-    <div class="site-meta-headline">
-      <a>
-        <img class="custom-logo-image" src="/images/me.jpg"
-             alt="Ucan 的个人博客"/>
-      </a>
-    </div>
   
 
   <div class="custom-logo-site-title">
@@ -171,6 +165,16 @@
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            menu.guestbook
           </a>
         </li>
       
@@ -258,25 +262,11 @@
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/-/images/top-img.jpg -/images/top-img-2.jpg" rel="gallery_cihis22es0000h0k2dixxba3s"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/-/images/top-img.jpg -/images/top-img-2.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
 
       
-        <span itemprop="articleBody"><h2 id="添加图片的方法：">添加图片的方法：</h2></span>
+        <span itemprop="articleBody"><h2 id="添加图片的方法：">添加图片的方法：</h2><p>图片为：<img src="" alt="">{ImgCap}{/ImgCap}</p>
+<p><img src="/images/top-img.jpg" alt="图片一"><br><img src="/images/top-img-2.jpg" alt="图片二"></p>
+</span>
       
     </div>
 
@@ -321,6 +311,9 @@
         </div>
 
         
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
 
 
         
@@ -509,10 +502,19 @@ var duoshuoQuery = {short_name:"uwcan"};
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
-
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script type="text/javascript">
+      jQuery(function() {          
+          jQuery("#posts img").lazyload({
+            placeholder:"http://www.arao.me/loading.gif",
+              effect:"fadeIn"
+            });
+          });
+  </script>
 
 
       </div>
