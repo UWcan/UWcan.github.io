@@ -1,8 +1,14 @@
 <!doctype html>
-<html class="theme-next   use-motion ">
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -21,18 +27,48 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="js,knockoutJs," />
@@ -41,12 +77,12 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Ucan 的个人博客" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="小小鱼的个人博客" type="application/atom+xml" />
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -57,7 +93,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="KnockoutJs实现树性结构列表">
 <meta property="og:url" content="http://yoursite.com/2016/11/01/20161101/index.html">
-<meta property="og:site_name" content="Ucan 的个人博客">
+<meta property="og:site_name" content="小小鱼的个人博客">
 <meta property="og:description" content="如果遇到这样的数据结构，用ko框架实现是非常简单的：1234567891011121314151617181920212223242526272829303132333435var dataTree=[  		&amp;#123;  			&quot;id&quot;:&quot;4&quot;,  			&quot;text&quot;:&quot;产品中心&quot;,  			&quot;pid&quot;:&quot;0&quot;,  			&quot;children&quot;:[   			&amp;#123;&quot;id&quot;:&quot;9&quot;,&quot;te">
 <meta property="og:image" content="http://yoursite.com/images/ko.gif">
 <meta property="og:updated_time" content="2016-11-01T03:30:58.040Z">
@@ -67,28 +103,41 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post',
-    motion: true
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
 
-  <title> KnockoutJs实现树性结构列表 | Ucan 的个人博客 </title>
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/01/20161101/"/>
+
+
+
+
+
+  <title> KnockoutJs实现树性结构列表 | 小小鱼的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -96,42 +145,59 @@
 
 
 
-  <div class="container one-column page-post-detail">
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta custom-logo">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Ucan 的个人博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小小鱼的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <p class="site-subtitle"></p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -141,9 +207,19 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -151,7 +227,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -161,24 +237,13 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-guestbook">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
-            
-            menu.guestbook
-          </a>
-        </li>
-      
 
-      
       
     </ul>
   
@@ -186,18 +251,20 @@
   
 </nav>
 
+
+
  </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
-  
   
 
   
@@ -205,6 +272,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/01/20161101/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小小鱼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小鱼的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -223,17 +301,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-11-01T12:14:00+08:00" content="2016-11-01">
-              2016-11-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-01T12:14:00+08:00">
+                2016-11-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/随笔/" itemprop="url" rel="index">
                     <span itemprop="name">随笔</span>
                   </a>
@@ -241,7 +338,6 @@
 
                 
                 
-
               
             </span>
           
@@ -251,26 +347,54 @@
           
 
           
+          
+
+          
+
+          
+
+          
 
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><p>如果遇到这样的数据结构，用ko框架实现是非常简单的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">var dataTree=[</span><br><span class="line">  		&#123;</span><br><span class="line">  			<span class="string">"id"</span>:<span class="string">"4"</span>,</span><br><span class="line">  			<span class="string">"text"</span>:<span class="string">"产品中心"</span>,</span><br><span class="line">  			<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">  			<span class="string">"children"</span>:[</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"9"</span>,<span class="string">"text"</span>:<span class="string">"展品组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"10"</span>,<span class="string">"text"</span>:<span class="string">"网站分析组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"8"</span>,<span class="string">"text"</span>:<span class="string">"设计组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"7"</span>,<span class="string">"text"</span>:<span class="string">"文案策划"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">  			]</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"28"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"商业智能中心"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"29"</span>,<span class="string">"text"</span>:<span class="string">"数据分析组"</span>,<span class="string">"pid"</span>:<span class="string">"28"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;,	</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"15"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"推广中心"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="string">"id"</span>:<span class="string">"16"</span>,</span><br><span class="line">				<span class="string">"text"</span>:<span class="string">"营销推广"</span>,</span><br><span class="line">				<span class="string">"pid"</span>:<span class="string">"15"</span>,</span><br><span class="line">				<span class="string">"children"</span>:[</span><br><span class="line">					&#123;<span class="string">"id"</span>:<span class="string">"17"</span>,<span class="string">"text"</span>:<span class="string">"媒介采购组"</span>,<span class="string">"pid"</span>:<span class="string">"16"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">				]</span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;]</span><br></pre></td></tr></table></figure></p>
+        <p>如果遇到这样的数据结构，用ko框架实现是非常简单的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">var dataTree=[</span><br><span class="line">  		&#123;</span><br><span class="line">  			<span class="string">"id"</span>:<span class="string">"4"</span>,</span><br><span class="line">  			<span class="string">"text"</span>:<span class="string">"产品中心"</span>,</span><br><span class="line">  			<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">  			<span class="string">"children"</span>:[</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"9"</span>,<span class="string">"text"</span>:<span class="string">"展品组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"10"</span>,<span class="string">"text"</span>:<span class="string">"网站分析组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"8"</span>,<span class="string">"text"</span>:<span class="string">"设计组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"7"</span>,<span class="string">"text"</span>:<span class="string">"文案策划"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">  			]</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"28"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"商业智能中心"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"29"</span>,<span class="string">"text"</span>:<span class="string">"数据分析组"</span>,<span class="string">"pid"</span>:<span class="string">"28"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;,	</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"15"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"推广中心"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="string">"id"</span>:<span class="string">"16"</span>,</span><br><span class="line">				<span class="string">"text"</span>:<span class="string">"营销推广"</span>,</span><br><span class="line">				<span class="string">"pid"</span>:<span class="string">"15"</span>,</span><br><span class="line">				<span class="string">"children"</span>:[</span><br><span class="line">					&#123;<span class="string">"id"</span>:<span class="string">"17"</span>,<span class="string">"text"</span>:<span class="string">"媒介采购组"</span>,<span class="string">"pid"</span>:<span class="string">"16"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">				]</span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;]</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>像这种层级不确定的数据结构，一般都是递归实现的。<br>用ko实现，其方法就是通过template绑定，通过模板将数据render到页面。模板绑定对于构建嵌套结构的页面非常方便。<br>现在我们先来把模板写好：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script id=<span class="string">"guideTmpl"</span> <span class="built_in">type</span>=<span class="string">"text/html"</span>&gt;</span><br><span class="line">    &lt;li &gt;</span><br><span class="line">    	&lt;div data-bind=<span class="string">"click:<span class="variable">$root</span>.toggleSelect,attr:&#123;id:id,class:'item '+(children.length&gt;0 ? 'bold' :'')&#125;"</span>&gt;</span><br><span class="line">    		&lt;span data-bind=<span class="string">'text: text'</span>&gt;&lt;/span&gt;</span><br><span class="line">    		&lt;!--ko <span class="keyword">if</span>:children.length&gt;<span class="number">0</span>--&gt;</span><br><span class="line">			&lt;span data-bind=<span class="string">"text:isOpen() ? '[-]' : '[+]'"</span>&gt;&lt;/span&gt;</span><br><span class="line">			&lt;!--/ko--&gt;</span><br><span class="line">    	&lt;/div&gt;</span><br><span class="line">		&lt;!--ko <span class="keyword">if</span>:isFolder--&gt;</span><br><span class="line">		&lt;ul data-bind=<span class="string">"template: &#123; name: 'guideTmpl', foreach: children &#125;"</span>&gt;&lt;/ul&gt;</span><br><span class="line">		&lt;!--/ko--&gt;</span><br><span class="line">	&lt;/li&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p>下面我们就在页面上使用该模板：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"userGroupTree"</span>&gt;</span><br><span class="line">	&lt;p data-bind=<span class="string">"click:mainOpen"</span>&gt;&lt;span&gt;请选择所属分支&lt;/span&gt;&lt;/p&gt;</span><br><span class="line">	&lt;!--ko <span class="keyword">if</span>:isShow--&gt;</span><br><span class="line">	&lt;ul  data-bind=<span class="string">"template: &#123; name: 'guideTmpl', foreach: menus &#125;"</span>&gt;&lt;/ul&gt;</span><br><span class="line">	&lt;!--/ko--&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>页面操作相关js：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">var dataTree=[</span><br><span class="line">  		&#123;</span><br><span class="line">  			<span class="string">"id"</span>:<span class="string">"4"</span>,</span><br><span class="line">  			<span class="string">"text"</span>:<span class="string">"产品中心"</span>,</span><br><span class="line">  			<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">  			<span class="string">"children"</span>:[</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"9"</span>,<span class="string">"text"</span>:<span class="string">"展品组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"10"</span>,<span class="string">"text"</span>:<span class="string">"网站分析组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"8"</span>,<span class="string">"text"</span>:<span class="string">"设计组"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">   			&#123;<span class="string">"id"</span>:<span class="string">"7"</span>,<span class="string">"text"</span>:<span class="string">"文案策划"</span>,<span class="string">"pid"</span>:<span class="string">"4"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">  			]</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"28"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"商业智能中心"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"29"</span>,<span class="string">"text"</span>:<span class="string">"数据分析组"</span>,<span class="string">"pid"</span>:<span class="string">"28"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;,	</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"15"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"推广中心"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="string">"id"</span>:<span class="string">"16"</span>,</span><br><span class="line">				<span class="string">"text"</span>:<span class="string">"营销推广"</span>,</span><br><span class="line">				<span class="string">"pid"</span>:<span class="string">"15"</span>,</span><br><span class="line">				<span class="string">"children"</span>:[</span><br><span class="line">					&#123;<span class="string">"id"</span>:<span class="string">"17"</span>,<span class="string">"text"</span>:<span class="string">"媒介采购组"</span>,<span class="string">"pid"</span>:<span class="string">"16"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">				]</span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"18"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"销售团队"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"19"</span>,<span class="string">"text"</span>:<span class="string">"nnn"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"26"</span>,<span class="string">"text"</span>:<span class="string">"aaa"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"25"</span>,<span class="string">"text"</span>:<span class="string">"lujing"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"24"</span>,<span class="string">"text"</span>:<span class="string">"weidian"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"23"</span>,<span class="string">"text"</span>:<span class="string">"山谷"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"22"</span>,<span class="string">"text"</span>:<span class="string">"cimei"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"21"</span>,<span class="string">"text"</span>:<span class="string">"yuexiu"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"20"</span>,<span class="string">"text"</span>:<span class="string">"panyu"</span>,<span class="string">"pid"</span>:<span class="string">"18"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"id"</span>:<span class="string">"6"</span>,</span><br><span class="line">		<span class="string">"text"</span>:<span class="string">"IT技术部"</span>,</span><br><span class="line">		<span class="string">"pid"</span>:<span class="string">"0"</span>,</span><br><span class="line">		<span class="string">"children"</span>:[</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"14"</span>,<span class="string">"text"</span>:<span class="string">"服务器运维"</span>,<span class="string">"pid"</span>:<span class="string">"6"</span>,<span class="string">"children"</span>:[]&#125;,			</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"13"</span>,<span class="string">"text"</span>:<span class="string">"网站前端组"</span>,<span class="string">"pid"</span>:<span class="string">"6"</span>,<span class="string">"children"</span>:[]&#125;,</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"11"</span>,<span class="string">"text"</span>:<span class="string">"网站开发组"</span>,<span class="string">"pid"</span>:<span class="string">"6"</span>,<span class="string">"children"</span>:[]&#125;,	</span><br><span class="line">			&#123;<span class="string">"id"</span>:<span class="string">"12"</span>,<span class="string">"text"</span>:<span class="string">"后台系统组"</span>,<span class="string">"pid"</span>:<span class="string">"6"</span>,<span class="string">"children"</span>:[]&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;];	</span><br><span class="line">	//给每个层级对象添加isOpen和isFolder属性	</span><br><span class="line">	<span class="keyword">function</span> addAttribute(dst)&#123;</span><br><span class="line">          <span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;dst.length;i++)&#123;</span><br><span class="line">              var temp=dst[i];</span><br><span class="line">              temp.isOpen=ko.observable(<span class="literal">false</span>);</span><br><span class="line">              temp.isFolder=ko.observable(<span class="literal">false</span>);</span><br><span class="line">              <span class="keyword">for</span>(var j=<span class="number">0</span>;j&lt;temp.children.length;j++)&#123;</span><br><span class="line">                  addAttribute(temp.children);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">	addAttribute(dataTree);</span><br><span class="line">	var TreeModel = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">		this.menus=ko.observableArray(dataTree);</span><br><span class="line">		this.isShow=ko.observable(<span class="literal">false</span>);</span><br><span class="line">		//展开、折叠操作</span><br><span class="line">		this.toggleSelect = <span class="keyword">function</span>(e)&#123;</span><br><span class="line">		    var open=e.current.isOpen();</span><br><span class="line">		    e.current.isFolder(<span class="literal">true</span>);</span><br><span class="line">		    <span class="keyword">if</span>(open)&#123;</span><br><span class="line">		    	e.current.isFolder(<span class="literal">false</span>);</span><br><span class="line">		    	e.current.isOpen(<span class="literal">false</span>);</span><br><span class="line">		    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		    	e.current.isFolder(<span class="literal">true</span>);</span><br><span class="line">		    	e.current.isOpen(<span class="literal">true</span>);</span><br><span class="line">		    &#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		this.mainOpen=<span class="keyword">function</span>(e)&#123;</span><br><span class="line">			 var opened = e.current.isShow();</span><br><span class="line">			 <span class="keyword">if</span>(opened)&#123;</span><br><span class="line">			 	e.current.isShow(<span class="literal">false</span>);</span><br><span class="line">			 &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			 	e.current.isShow(<span class="literal">true</span>);</span><br><span class="line">			 &#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	//Knockout调用applyBindings激活TreeModel（即把myViewModel和View中的声明式绑定data-bind接洽关系起来）</span><br><span class="line">	ko.applyBindings(new TreeModel());</span><br></pre></td></tr></table></figure></p>
 <p>好了，打开页面调式如下：<br><img src="/images/ko.gif" alt="图片一"></p>
-</span>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
       
     </div>
 
@@ -278,24 +402,34 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag">#js</a>
+            <a href="/tags/js/" rel="tag"># js</a>
           
-            <a href="/tags/knockoutJs/" rel="tag">#knockoutJs</a>
+            <a href="/tags/knockoutJs/" rel="tag"># knockoutJs</a>
           
         </div>
+      
+
+      
+        
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/01/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2015/11/28/20151128/" rel="next" title="我终于有自己的博客啦">
+                <i class="fa fa-chevron-left"></i> 我终于有自己的博客啦
               </a>
             
           </div>
 
+          <span class="post-nav-divider"></span>
+
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/24/hello-world/" rel="prev" title="hexo常用命令">
+                hexo常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -314,37 +448,22 @@
   </div>
 
 
-        </div>
-
-        
+          </div>
+          
 
   <p>热评文章</p>
   <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
 
 
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
         
-  <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="2016/11/01/20161101/" data-title="KnockoutJs实现树性结构列表" data-url="http://yoursite.com/2016/11/01/20161101/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"uwcan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-
-
-      </div>
-
-      
-        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -360,43 +479,49 @@ var duoshuoQuery = {short_name:"uwcan"};
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/avatar.jpg" alt="Ucan" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Ucan</p>
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="小小鱼" />
+          <p class="site-author-name" itemprop="name">小小鱼</p>
+           
+              <p class="site-description motion-element" itemprop="description">Be a good girl!!!</p>
+          
         </div>
-        <p class="site-description motion-element" itemprop="description">Be a good girl!!!</p>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">标签</span>
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
 
         </nav>
 
@@ -413,26 +538,20 @@ var duoshuoQuery = {short_name:"uwcan"};
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/UWcan/" target="_blank">
+                <a href="https://github.com/UWcan" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-github"></i> GitHub
+                    <i class="fa fa-fw fa-github"></i>
                   
+                  GitHub
                 </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://www.cnblogs.com/U-can/" target="_blank">
+                <a href="https://coding.net/user" target="_blank" title="Codding">
                   
-                    <i class="fa fa-globe"></i> cnblogs
+                    <i class="fa fa-fw fa-globe"></i>
                   
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/U_can" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> coding
-                  
+                  Codding
                 </a>
               </span>
             
@@ -442,291 +561,204 @@ var duoshuoQuery = {short_name:"uwcan"};
         
         
 
-        <div class="links-of-author motion-element">
-          
-            <p class="site-author-name">Links</p>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.zhangxinxu.com" target="_blank">张鑫旭个人博客</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.cnblogs.com/PeunZhang/" target="_blank">白树个人博客</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.smohan.net" target="_blank">水墨寒个人博客</a>
-              </span>
-            
-          
-        </div>
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhangxinxu.com" title="张鑫旭个人博客" target="_blank">张鑫旭个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/PeunZhang/" title="白树个人博客" target="_blank">白树个人博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
 
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
+
       
 
     </div>
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Ucan</span>
+  <span class="author" itemprop="copyrightHolder">小小鱼</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
-    <script type="text/javascript">
-      jQuery(function() {          
-          jQuery("#posts img").lazyload({
-            placeholder:"http://www.arao.me/loading.gif",
-              effect:"fadeIn"
-            });
-          });
-  </script>
 
 
+        
+
+        
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
   
 
-  
-    
-    
-
-  
-
-
-  
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
-
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    motionMiddleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-      if (CONFIG.sidebar === 'post') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          displaySidebar();
-        }
-      }
-    };
-  });
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
 
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
   
 
 </body>
