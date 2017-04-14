@@ -95,11 +95,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[CSS3属性之transform学习笔记]]></title>
+    <title><![CDATA[一次web网站总结]]></title>
     <link href="http://yoursite.com/2015/04/01/20150401/"/>
     <id>http://yoursite.com/2015/04/01/20150401/</id>
     <published>2015-04-01T10:09:00.000Z</published>
-    <updated>2017-04-13T10:34:04.999Z</updated>
+    <updated>2017-04-14T03:12:13.244Z</updated>
     <content type="html"><![CDATA[<p>之前公司是用flash做的这个网站，现在因为访问速度过慢或者别的原因，由我来用html5重新写过，排版布局和之前的都是一样的。<br>网页总体需要实现以下功能：</p>
 <ol>
 <li>背景图片轮播</li>
