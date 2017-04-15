@@ -153,7 +153,7 @@
     <link href="http://yoursite.com/2015/04/03/20150403/"/>
     <id>http://yoursite.com/2015/04/03/20150403/</id>
     <published>2015-04-03T04:23:00.000Z</published>
-    <updated>2017-04-15T09:59:44.031Z</updated>
+    <updated>2017-04-15T10:00:41.126Z</updated>
     <content type="html"><![CDATA[<h1 id="1、单行文本溢出显示省略号的css写法">1、单行文本溢出显示省略号的css写法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden;</span><br><span class="line">text-overflow:ellipsis;</span><br><span class="line">white-space:nowrap;/*不换行*/</span><br></pre></td></tr></table></figure>
 <h1 id="2、多行文本显示省略号(这里根据应用场景来实现)">2、多行文本显示省略号(这里根据应用场景来实现)</h1><h2 id="（1）Webkit浏览器或移动端页面">（1）Webkit浏览器或移动端页面</h2><p>可以使用webkit的私有属性：-webkit-line-clamp（这个属性不属于css规范），该属性用来显示块元素显示的文本行数。要实现该效果，需要组合其他的Webkit属性。<br>常见结合的属性：　</p>
 <ul>
