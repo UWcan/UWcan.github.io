@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小小鱼的个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文主要是记录常用的git命令，环境：win7 64位 命令面板：Git Bash推荐用可视化工具，如TortoiseGit，操作非常简单。但是我觉得作为一名合格的程序员，通过命令行提交代码是一件可以装逼的事，哈哈哈。。。
+
+设置Git的username和email12$ git config --global user.name &quot;U_can&quot;$ git config --global user">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git命令使用笔记">
+<meta property="og:url" content="http://yoursite.com/2015/06/13/20150613/index.html">
+<meta property="og:site_name" content="小小鱼的个人博客">
+<meta property="og:description" content="本文主要是记录常用的git命令，环境：win7 64位 命令面板：Git Bash推荐用可视化工具，如TortoiseGit，操作非常简单。但是我觉得作为一名合格的程序员，通过命令行提交代码是一件可以装逼的事，哈哈哈。。。
+
+设置Git的username和email12$ git config --global user.name &quot;U_can&quot;$ git config --global user">
+<meta property="og:updated_time" content="2017-04-15T09:38:44.066Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git命令使用笔记">
+<meta name="twitter:description" content="本文主要是记录常用的git命令，环境：win7 64位 命令面板：Git Bash推荐用可视化工具，如TortoiseGit，操作非常简单。但是我觉得作为一名合格的程序员，通过命令行提交代码是一件可以装逼的事，哈哈哈。。。
+
+设置Git的username和email12$ git config --global user.name &quot;U_can&quot;$ git config --global user">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/06/13/20150613/"/>
+
+
+
+
+
+  <title> git命令使用笔记 | 小小鱼的个人博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小小鱼的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/13/20150613/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小小鱼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小鱼的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git命令使用笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-13T21:52:00+08:00">
+                2015-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端分享/" itemprop="url" rel="index">
+                    <span itemprop="name">前端分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文主要是记录常用的git命令，环境：win7 64位 命令面板：Git Bash<br>推荐用可视化工具，如TortoiseGit，操作非常简单。但是我觉得作为一名合格的程序员，通过命令行提交代码是一件可以装逼的事，哈哈哈。。。</p>
+</blockquote>
+<h1 id="设置Git的username和email">设置Git的username和email</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"U_can"</span></span><br><span class="line">$ git config --global user.email <span class="string">"xxx@qq.com"</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="查看之前是否生成过ssh密钥">查看之前是否生成过ssh密钥</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>进入到.ssh目录下（如果没有该目录，则直接跳到生成密钥ssh-keygen ），<b>显示该目录下的所有文件：ls</b><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ls</span><br></pre></td></tr></table></figure></p>
+<p>备注：$ ls -ah可以查看隐藏的文件<br>执行完命令后会显示目录下有这三个文件：id_rsa（私钥，不能泄露）  id_rsa.pub（对应的公钥，可以公开）  known_hosts，说明已经生成过密钥<br>如果没有生成过密钥，则执行下面的命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"xxx@qq.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>生成密钥过程中会提示让你输入密码，这个密码会让你在以后提交代码的过程中使用，不过也可以不用设置。<br>之后会在该路径下生成密钥文件：C:\Users\9007656.ssh<br>如果你要提交代码到远程托管仓库（如github或gitLab），则需要将你生成的公钥（.pub）添加到上面sshkey，添加完成之后验证这个key是否正常：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase <span class="keyword">for</span> key <span class="string">'/c/Users/9007656/.ssh/id_rsa'</span>:</span><br><span class="line">Hi UWcan! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell a ccess.</span></span><br></pre></td></tr></table></figure>
+<p>因为我设置过密码，所以会提示我先输入密码，输入密码之后回车，然后显示Hi…，说明我已经正确连接了</p>
+<h1 id="创建仓库，克隆远程代码到本地">创建仓库，克隆远程代码到本地</h1><h2 id="准备工作">准备工作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//进入到你要克隆代码的文件夹web</span><br><span class="line">$ <span class="built_in">cd</span> web</span><br><span class="line">//如果远程没有仓库，可以在Tms里面初始化仓库，产生.git文件,如果克隆远程仓库，会自动有.git文件，不需要初始化</span><br><span class="line">$ git init</span><br><span class="line"><span class="comment">#Initialized empty Git repository in f:/web/.git/</span></span><br></pre></td></tr></table></figure>
+<h2 id="克隆远程文件">克隆远程文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@gitlab.fmkeji.com:<span class="number">9003931</span>/TMS.git</span><br><span class="line">Cloning into <span class="string">'TMS'</span>...</span><br><span class="line">Enter passphrase <span class="keyword">for</span> key <span class="string">'/c/Users/9007656/.ssh/id_rsa'</span>:</span><br><span class="line">remote: Counting objects: <span class="number">9526</span>, done.</span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">4748</span>/<span class="number">4748</span>), done.</span><br><span class="line">remote: Total <span class="number">9526</span> (delta <span class="number">4791</span>), reused <span class="number">9239</span> (delta <span class="number">4576</span>)</span><br><span class="line">Receiving objects: <span class="number">100</span>% (<span class="number">9526</span>/<span class="number">9526</span>), <span class="number">11.54</span> MiB | <span class="number">9.84</span> MiB/s, done.</span><br><span class="line">Resolving deltas: <span class="number">100</span>% (<span class="number">4791</span>/<span class="number">4791</span>), done.</span><br><span class="line">Checking connectivity... done.</span><br></pre></td></tr></table></figure>
+<p>此时已经成功将代码克隆到本地了</p>
+<h1 id="添加文件">添加文件</h1><p>把文件修改添加到暂存区<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;fileName&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="提交文件">提交文件</h1><p>把暂存区的所有内容提交到当前分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"提交备注"</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="查看文件状态">查看文件状态</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+<h1 id="查看修改内容">查看修改内容</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br></pre></td></tr></table></figure>
+<h1 id="版本回退、撤回修改">版本回退、撤回修改</h1><p> 如果你提交了修改后boss或产品又说不用修改了，就用之前的方案。那么你可以直接用git还原到修改前的状态，而不用修改代码，省了你很多麻烦。<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">或</span><br><span class="line">$ git <span class="built_in">log</span> --pretty=online</span><br></pre></td></tr></table></figure></p>
+<p> 这样可以看到你提交代码的记录，方便你查询回退到哪个版本，比如我们现在要把版本回退到如：2222，<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard <span class="number">2222</span></span><br><span class="line">HEAD is now at <span class="number">3628164</span> append GPL</span><br></pre></td></tr></table></figure></p>
+<p> 这样就可以回退到你想到的版本了。<br>如果你回退之后boss或产品大大又说还是改回来吧，此时心里万只草泥马在奔腾，不过没关系，git很能干的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure></p>
+<p>就这么简单，代码回来了</p>
+<h1 id="还原修改">还原修改</h1><p>如果你修改了文件之后，还没提交，boss通知你说不需要修改了，那么你直接将该文件还原就行了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure></p>
+<p>命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令</p>
+<h1 id="关联远程库并推送代码">关联远程库并推送代码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remost add origin git@远程仓库地址</span><br></pre></td></tr></table></figure>
+<p>关联后，使用命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<p>第一次推送master分支的所有内容，以后的修改推送可以省略-u</p>
+<h1 id="创建、切换分支">创建、切换分支</h1><h2 id="创建分支">创建分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch develop</span><br></pre></td></tr></table></figure>
+<h2 id="切换分支">切换分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout develop</span><br></pre></td></tr></table></figure>
+<h2 id="创建并切换分支">创建并切换分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b develop</span><br></pre></td></tr></table></figure>
+<h1 id="合并分支">合并分支</h1><p>假设当前分支是develop，此时我想把master分支合并到develop<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge master</span><br></pre></td></tr></table></figure></p>
+<h1 id="删除分支">删除分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch <span class="operator">-d</span> develop</span><br><span class="line"><span class="comment">#查看所有分支</span></span><br><span class="line">$ git branch</span><br><span class="line">*master</span><br></pre></td></tr></table></figure>
+<p>说明develop分支已经成功删除</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/03/20150403/" rel="next" title="网页之文本溢出显示省略号">
+                <i class="fa fa-chevron-left"></i> 网页之文本溢出显示省略号
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/10/20151010/" rel="prev" title="hexo常用命令">
+                hexo常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="小小鱼" />
+          <p class="site-author-name" itemprop="name">小小鱼</p>
+           
+              <p class="site-description motion-element" itemprop="description">Be a good girl!!!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/UWcan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/U_can" target="_blank" title="Codding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Codding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhangxinxu.com" title="张鑫旭个人博客" target="_blank">张鑫旭个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/PeunZhang/" title="白树个人博客" target="_blank">白树个人博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设置Git的username和email"><span class="nav-number">1.</span> <span class="nav-text">设置Git的username和email</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看之前是否生成过ssh密钥"><span class="nav-number">2.</span> <span class="nav-text">查看之前是否生成过ssh密钥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建仓库，克隆远程代码到本地"><span class="nav-number">3.</span> <span class="nav-text">创建仓库，克隆远程代码到本地</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">3.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆远程文件"><span class="nav-number">3.2.</span> <span class="nav-text">克隆远程文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加文件"><span class="nav-number">4.</span> <span class="nav-text">添加文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提交文件"><span class="nav-number">5.</span> <span class="nav-text">提交文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看文件状态"><span class="nav-number">6.</span> <span class="nav-text">查看文件状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看修改内容"><span class="nav-number">7.</span> <span class="nav-text">查看修改内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#版本回退、撤回修改"><span class="nav-number">8.</span> <span class="nav-text">版本回退、撤回修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#还原修改"><span class="nav-number">9.</span> <span class="nav-text">还原修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关联远程库并推送代码"><span class="nav-number">10.</span> <span class="nav-text">关联远程库并推送代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建、切换分支"><span class="nav-number">11.</span> <span class="nav-text">创建、切换分支</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支"><span class="nav-number">11.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换分支"><span class="nav-number">11.2.</span> <span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建并切换分支"><span class="nav-number">11.3.</span> <span class="nav-text">创建并切换分支</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合并分支"><span class="nav-number">12.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除分支"><span class="nav-number">13.</span> <span class="nav-text">删除分支</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小小鱼</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
