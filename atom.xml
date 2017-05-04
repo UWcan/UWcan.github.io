@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[小小鱼的个人博客]]></title>
+  <title><![CDATA[啦啦啦，欢迎光临]]></title>
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
@@ -8,7 +8,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name><![CDATA[小小鱼]]></name>
+    <name><![CDATA[U_can]]></name>
     
   </author>
   
@@ -50,13 +50,61 @@
     <link href="http://yoursite.com/2015/11/28/20151128/"/>
     <id>http://yoursite.com/2015/11/28/20151128/</id>
     <published>2015-11-28T07:14:00.000Z</published>
-    <updated>2017-05-03T07:27:38.350Z</updated>
-    <content type="html"><![CDATA[<h2 id="添加图片的方法：">添加图片的方法：</h2><a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">图片为：![图片说明](图片路径)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/top-img.jpg" alt="图片一"><br><img src="/images/top-img-2.jpg" alt="图片二"></p>
+    <updated>2017-05-04T10:07:48.045Z</updated>
+    <content type="html"><![CDATA[<h2 id="段落、换行">段落、换行</h2><blockquote>
+<p>一个Markdown段落是由一个或多个连续的文本行组成，它的前后要有<code>一个以上的空行</code>（空行的定义是显示上看起来像是空的，便会被视为空行</p>
+</blockquote>
+<h2 id="标题">标题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是H1</span></span><br><span class="line"><span class="comment">## 这是H2</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="comment">###### 这是H6</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="区块引用_Blockquotes">区块引用 Blockquotes</h2><blockquote>
+<p>用<code>&gt;</code>的引用方式，符号标记后至少接一个空格或制表符：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; this is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span><br><span class="line">&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br><span class="line">&gt; Vestibulum enim wisi, viverra nec, fringilla <span class="keyword">in</span>, laoreet vitae, risus</span><br></pre></td></tr></table></figure>
+<p>也可以在整段文字的第一行前面加<code>&gt;</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; this is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span><br><span class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br><span class="line">Vestibulum enim wisi, viverra nec, fringilla <span class="keyword">in</span>, laoreet vitae, risus</span><br></pre></td></tr></table></figure></p>
+<h2 id="列表">列表</h2><h3 id="无序列表">无序列表</h3><blockquote>
+<p>无序列表使用<code>星号(*)</code>、<code>加号(+)</code>或是<code>减号(-)</code>作为列表标记：</p>
+</blockquote>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*   </span>Red</span><br><span class="line"><span class="bullet">*   </span>Green</span><br><span class="line"><span class="bullet">*   </span>Blue</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+<h3 id="有序列表">有序列表</h3><blockquote>
+<p>有序列表使用数字接着一个英文句点，数字可以是不按序号来，但是养成好习惯，还是从1开始计算：</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>   Red</span><br><span class="line"><span class="number">2.</span>   Green</span><br><span class="line"><span class="number">3.</span>   Blue</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ol>
+<h2 id="分隔线">分隔线</h2><p>你可以在一行中用<code>三个以上的星号、减号、底线</code>来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span> <span class="keyword">*</span> <span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">- - -</span><br><span class="line">---------------------------------------</span><br></pre></td></tr></table></figure></p>
+<h2 id="链接">链接</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="link_label">title</span>](<span class="link_url">url</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="添加图片的方法：">添加图片的方法：</h2><p>行内式的图片语法:<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">图片为：![<span class="link_label">图片说明</span>](<span class="link_url">图片路径</span>)</span><br></pre></td></tr></table></figure></p>
+<p>参考式的图片语法:<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="link_label">图片说明</span>][<span class="link_reference">id</span>]</span><br></pre></td></tr></table></figure></p>
+<p>「id」是图片参考的名称，图片参考的定义方式则和链接参考一样：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="property">id</span>]: url/<span class="keyword">to</span>/image  <span class="string">"Optional title attribute"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="强调">强调</h2><blockquote>
+<p>Markdown 使用星号（<em>）和底线（_）作为标记强调字词的符号，被 </em> 或 <em> 包围的字词会被转成用 <em> 标签包围，用两个 * 或 </em> 包起来的话，则会被转成 <strong></strong></em></p>
+</blockquote>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span>single asterisks<span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">_single underscores_</span><br><span class="line"></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>double asterisks<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">__double underscores__</span><br></pre></td></tr></table></figure>
+<p>表现如下：<br><em>single asterisks</em></p>
+<p><em>single underscores</em></p>
+<p><strong>double asterisks</strong></p>
+<p><strong>double underscores</strong></p>
+<p>如果要在文字前后直接插入普通的星号或底线，你可以用反斜线：<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">\*this</span> text <span class="keyword">is</span> surrounded <span class="keyword">by</span> literal asterisks<span class="string">\*</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="代码">代码</h2><p>行内代码可以用一对<em>反引号（`）</em>包起来：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Use</span> the `printf()` <span class="function"><span class="keyword">function</span>.</span></span><br></pre></td></tr></table></figure>
+<p>如果是插入代码块，则用多个反引号包起来，一般习惯用3个反引号</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/<span class="escape">``</span><span class="escape">`T</span>here is <span class="literal">a</span> literal backtick (<span class="escape">`)</span> here.<span class="escape">``</span><span class="escape">`/</span></span><br></pre></td></tr></table></figure>
+<p><strong>最后，Markdown 支持以下这些符号前面加上反斜杠（/）来帮助插入普通的符号：</strong></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\   反斜线</span><br><span class="line">`   反引号</span><br><span class="line"><span class="bullet">*   </span>星号</span><br><span class="line">_   底线</span><br><span class="line">&#123;&#125;  花括号</span><br><span class="line">[]  方括号</span><br><span class="line">()  括弧</span><br><span class="line">/#   井字号</span><br><span class="line">+   加号</span><br><span class="line"><span class="bullet">-   </span>减号</span><br><span class="line"><span class="bullet">.   </span>英文句点</span><br><span class="line">!   惊叹号</span><br></pre></td></tr></table></figure>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="添加图片的方法：">添加图片的方法：</h2>]]>
+    <![CDATA[<h2 id="段落、换行">段落、换行</h2><blockquote>
+<p>一个Markdown段落是由一个或多个连续的文本行组成，它的前后要有<code>一个以上的空行</code>（空行的定义是显示上看起来像是空的，便会被视为空行</p>
+</blockquote>
+<h2 id="标题">标题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是H1</span></span><br><span class="line"><span class="comment">## 这是H2</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="comment">###### 这是H6</span></span><br></pre></td></tr></table></figure>]]>
     
     </summary>
     
