@@ -50,7 +50,7 @@
     <link href="http://yoursite.com/2015/11/28/20151128/"/>
     <id>http://yoursite.com/2015/11/28/20151128/</id>
     <published>2015-11-28T07:14:00.000Z</published>
-    <updated>2017-05-04T10:07:48.045Z</updated>
+    <updated>2017-05-05T03:24:05.971Z</updated>
     <content type="html"><![CDATA[<h2 id="段落、换行">段落、换行</h2><blockquote>
 <p>一个Markdown段落是由一个或多个连续的文本行组成，它的前后要有<code>一个以上的空行</code>（空行的定义是显示上看起来像是空的，便会被视为空行</p>
 </blockquote>
@@ -85,7 +85,7 @@
 <p>参考式的图片语法:<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="link_label">图片说明</span>][<span class="link_reference">id</span>]</span><br></pre></td></tr></table></figure></p>
 <p>「id」是图片参考的名称，图片参考的定义方式则和链接参考一样：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="property">id</span>]: url/<span class="keyword">to</span>/image  <span class="string">"Optional title attribute"</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="强调">强调</h2><blockquote>
-<p>Markdown 使用星号（<em>）和底线（_）作为标记强调字词的符号，被 </em> 或 <em> 包围的字词会被转成用 <em> 标签包围，用两个 * 或 </em> 包起来的话，则会被转成 <strong></strong></em></p>
+<p>Markdown 使用星号（<em>）和底线（_）作为标记强调字词的符号，被 </em> 或 <em> 包围的字词会被转成用 <em> 标签包围，用两个 * 或 </em> 包起来的话，则会被转成 &lt; strong &gt;</em></p>
 </blockquote>
 <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span>single asterisks<span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">_single underscores_</span><br><span class="line"></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>double asterisks<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">__double underscores__</span><br></pre></td></tr></table></figure>
 <p>表现如下：<br><em>single asterisks</em></p>
