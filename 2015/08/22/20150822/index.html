@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="啦啦啦，欢迎光临" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="自己写了一个tab选项卡的切换，感觉还不错，跟大家分享一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript之tab面板切换">
+<meta property="og:url" content="http://yoursite.com/2015/08/22/20150822/index.html">
+<meta property="og:site_name" content="啦啦啦，欢迎光临">
+<meta property="og:description" content="自己写了一个tab选项卡的切换，感觉还不错，跟大家分享一下。">
+<meta property="og:image" content="http://yoursite.com/uploads/artical_img/2015082201.gif">
+<meta property="og:image" content="http://yoursite.com/uploads/artical_img/2015082202.gif">
+<meta property="og:updated_time" content="2017-05-23T01:44:55.657Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript之tab面板切换">
+<meta name="twitter:description" content="自己写了一个tab选项卡的切换，感觉还不错，跟大家分享一下。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/22/20150822/"/>
+
+
+
+
+  <title> JavaScript之tab面板切换 | 啦啦啦，欢迎光临 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啦啦啦，欢迎光临</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/22/20150822/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="U_can">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啦啦啦，欢迎光临">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript之tab面板切换
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-22T22:32:00+08:00">
+                2015-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端分享/" itemprop="url" rel="index">
+                    <span itemprop="name">前端分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>自己写了一个tab选项卡的切换，感觉还不错，跟大家分享一下。</p>
+</blockquote>
+<a id="more"></a>
+<p>一、点击切换</p>
+<p>页面效果：<br><img src="/uploads/artical_img/2015082201.gif" alt="示意图1"><br>html页面：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"utf-8"</span> /&gt;</span><br><span class="line">        &lt;title&gt;tab面板切换&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            .content&#123;width: <span class="number">1000</span>px;height: <span class="number">500</span>px;margin: <span class="number">0</span> auto;border: <span class="number">1</span>px solid <span class="comment">#ccc&#125;</span></span><br><span class="line">            <span class="comment">#sel_ul&#123;width: 100%;text-align: center;overflow: hidden;border: 1px solid #ccc;&#125;</span></span><br><span class="line">            <span class="comment">#sel_ul li&#123;display: inline-block;width: 75px;height: 75px;border-right: 1px solid #ccc;cursor: pointer;&#125;</span></span><br><span class="line">            img&#123;width: <span class="number">100</span>%;height: auto;&#125;</span><br><span class="line">            .banner&#123;width: <span class="number">1000</span>px;height: <span class="number">400</span>px;display: none;&#125;</span><br><span class="line">            .on&#123;display: block;&#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=<span class="string">"content"</span>&gt;</span><br><span class="line">                &lt;div id=<span class="string">"sel_ul"</span>&gt;</span><br><span class="line">                    &lt;li&gt;&lt;img src=<span class="string">"img/shap_1.png"</span> &gt;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;&lt;img src=<span class="string">"img/shap_3.png"</span> &gt;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;&lt;img src=<span class="string">"img/shap_4.png"</span> &gt;&lt;/li&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=<span class="string">"banner on"</span>&gt;aaaa&lt;/div&gt;</span><br><span class="line">                &lt;div class=<span class="string">"banner"</span>&gt;bbbb&lt;/div&gt;</span><br><span class="line">                &lt;div class=<span class="string">"banner"</span>&gt;cccc&lt;/div&gt;</span><br><span class="line">            </span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>js代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">var ChangeNode=<span class="keyword">function</span>(b_img_src,g_img_src,target,banner_t)&#123;</span><br><span class="line">    this.blue_img_src=b_img_src;//点亮的图片</span><br><span class="line">    this.gray_img_scr=g_img_src;//未点亮的灰色图片</span><br><span class="line">    this.img_li=target;//包含img标签的li容器</span><br><span class="line">    this.banner_tartet=banner_t;//banner面板</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line"> @news:新的ChangeNode对象</span><br><span class="line"> @old：与news相对</span><br><span class="line"> * */</span><br><span class="line"><span class="keyword">function</span> changeImg(news,old)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(old!=null)</span><br><span class="line">    &#123;</span><br><span class="line">          old.img_li.querySelector(<span class="string">"img"</span>).src=old.gray_img_scr; </span><br><span class="line">          old.banner_tartet.className=<span class="string">"banner"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    news.img_li.querySelector(<span class="string">"img"</span>).src=news.blue_img_src;</span><br><span class="line">    news.banner_tartet.className=<span class="string">"banner on"</span>;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(document.getElementById)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!document.getElementById(<span class="string">"sel_ul"</span>))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var sel_ul=document.getElementById(<span class="string">"sel_ul"</span>),</span><br><span class="line">        sel_li=sel_ul.querySelectorAll(<span class="string">"li"</span>),</span><br><span class="line">        li_len=sel_li.length || sel_ul.childNodes.length,//获取子元素的长度</span><br><span class="line">        banner_list=document.querySelectorAll(<span class="string">".banner"</span>);</span><br><span class="line">    </span><br><span class="line">    var changeImgFooPool=new Array();</span><br><span class="line">    changeImgFooPool[<span class="number">0</span>]=new ChangeNode(<span class="string">"img/shap_1_sel.png"</span>,<span class="string">"img/shap_1.png"</span>,sel_li[<span class="number">0</span>],banner_list[<span class="number">0</span>]);</span><br><span class="line">    changeImgFooPool[<span class="number">1</span>]=new ChangeNode(<span class="string">"img/shap_3_sel.png"</span>,<span class="string">"img/shap_3.png"</span>,sel_li[<span class="number">1</span>],banner_list[<span class="number">1</span>]);</span><br><span class="line">    changeImgFooPool[<span class="number">2</span>]=new ChangeNode(<span class="string">"img/shap_4_sel.png"</span>,<span class="string">"img/shap_4.png"</span>,sel_li[<span class="number">2</span>],banner_list[<span class="number">2</span>]);</span><br><span class="line">    </span><br><span class="line">    var index=-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;li_len;i++)&#123;</span><br><span class="line">        index=index+<span class="number">1</span>;</span><br><span class="line">        sel_li[i].setAttribute(<span class="string">"index"</span>,index);                    </span><br><span class="line">    &#125;</span><br><span class="line">    var currentTarget=null;</span><br><span class="line">    currentTarget=changeImgFooPool[<span class="number">0</span>];</span><br><span class="line">    changeImg(currentTarget,null);</span><br><span class="line">    </span><br><span class="line">    sel_ul.onclick=<span class="keyword">function</span>(e)&#123;</span><br><span class="line">        </span><br><span class="line">        var evt=e||window.event;</span><br><span class="line">        var target=evt.target||evt.srcElement;</span><br><span class="line">        </span><br><span class="line">       var temp=null;</span><br><span class="line">       <span class="keyword">if</span>(target.nodeName.toLowerCase()==<span class="string">"img"</span>)&#123;                   </span><br><span class="line">                <span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;li_len;i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(target.parentNode==changeImgFooPool[i].img_li)&#123;</span><br><span class="line">                        temp=changeImgFooPool[i];</span><br><span class="line">                        <span class="built_in">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">           changeImg(temp,currentTarget);</span><br><span class="line">           currentTarget=temp;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p> 二、鼠标滑过切换</p>
+<p>页面预览：<br><img src="/uploads/artical_img/2015082202.gif" alt="示意图2"><br>页面代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">        &lt;title&gt;tab滑过切换&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">        *&#123;</span><br><span class="line">            padding: <span class="number">0</span>;</span><br><span class="line">            margin: <span class="number">0</span> auto;</span><br><span class="line">        &#125;</span><br><span class="line">        ul ,li&#123;list-style: none;&#125;</span><br><span class="line">            .all&#123;</span><br><span class="line">                width: <span class="number">280</span>px;</span><br><span class="line">                height: <span class="number">150</span>px;</span><br><span class="line">                border: <span class="number">1</span>px solid <span class="comment">#666666;</span></span><br><span class="line">            &#125;</span><br><span class="line">            .notic-tit&#123;</span><br><span class="line">                width: <span class="number">280</span>px;</span><br><span class="line">                height: <span class="number">40</span>px;</span><br><span class="line">                line-height: <span class="number">40</span>px;</span><br><span class="line">                background: <span class="comment">#CCCCCC;</span></span><br><span class="line">                font-size: <span class="number">16</span>px;</span><br><span class="line">                text-align: center;                </span><br><span class="line">            &#125;</span><br><span class="line">            .notic-tit ul li&#123;</span><br><span class="line">                <span class="built_in">float</span>: left;</span><br><span class="line">                width: <span class="number">68</span>px;</span><br><span class="line">                height:<span class="number">39</span>px;</span><br><span class="line">                border-bottom: <span class="number">1</span>px solid <span class="comment">#CCCCCC;</span></span><br><span class="line">                padding: <span class="number">0</span> <span class="number">1</span>px;</span><br><span class="line">            &#125;</span><br><span class="line">            .notic-tit ul li.select&#123;</span><br><span class="line">                background: white;</span><br><span class="line">                font-weight: bolder;</span><br><span class="line">                border-left: <span class="number">1</span>px solid <span class="comment">#ccc;</span></span><br><span class="line">                border-right: <span class="number">1</span>px solid <span class="comment">#ccc;</span></span><br><span class="line">                border-bottom-color:white ;</span><br><span class="line">                color: orange;</span><br><span class="line">                padding: <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            .content-inner&#123; width: <span class="number">280</span>px;margin: <span class="number">20</span>px;&#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=<span class="string">"all"</span>&gt;</span><br><span class="line">        &lt;div class=<span class="string">"notic-tit"</span>&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li class=<span class="string">"select"</span>&gt;&lt;a&gt;娱乐&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li &gt;&lt;a&gt;体育&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li &gt;&lt;a&gt;购物&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li &gt;&lt;a&gt;美食&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=<span class="string">"content"</span>&gt;</span><br><span class="line">            &lt;div class=<span class="string">"content-inner"</span> style=<span class="string">"display: block;"</span>&gt;</span><br><span class="line">                &lt;p&gt;呵呵而后 娱乐&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">"content-inner"</span> style=<span class="string">"display: none;"</span>&gt;</span><br><span class="line">                &lt;p&gt;呵呵而后 体育&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">"content-inner"</span> style=<span class="string">"display: none;"</span>&gt;</span><br><span class="line">                &lt;p&gt;呵呵而后 购物&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">"content-inner"</span> style=<span class="string">"display: none;"</span>&gt;</span><br><span class="line">                &lt;p&gt;呵呵而后 美食&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            window.onload=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                var notic_tit=document.querySelector(<span class="string">".notic-tit"</span>);</span><br><span class="line">                var li=notic_tit.getElementsByTagName(<span class="string">"li"</span>);    </span><br><span class="line">                var content_inner=document.getElementsByClassName(<span class="string">"content-inner"</span>);</span><br><span class="line">                <span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;li.length;i++)&#123;</span><br><span class="line">                    li[i].id=i;                    </span><br><span class="line">                    li[i].onmouseover=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                        <span class="keyword">for</span>(var j=<span class="number">0</span>;j&lt;li.length;j++)&#123;</span><br><span class="line">                            li[j].className=<span class="string">""</span>;</span><br><span class="line">                            content_inner[j].style.display=<span class="string">"none"</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        this.className=<span class="string">"select"</span>;</span><br><span class="line">                        content_inner[this.id].style.display=<span class="string">"block"</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>因为js没有像jQuery有addClass，removeClass之类的方法，我在网上看到用js实现这方面的方法，记录一下，方便以后使用。</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> addClass(obj, cls) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!this.hasClass(obj, cls)) &#123;</span><br><span class="line">           obj.className += <span class="string">" "</span> + cls;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> hasClass(obj, cls) &#123;</span><br><span class="line">   <span class="built_in">return</span> obj.className.match(new RegExp(<span class="string">'(\\s|^)'</span> + cls + <span class="string">'(\\s|$)'</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> removeClass(obj, cls) &#123;</span><br><span class="line">    <span class="keyword">if</span> (hasClass(obj, cls)) &#123;</span><br><span class="line">      var reg = new RegExp(<span class="string">'(\\s|^)'</span> + cls + <span class="string">'(\\s|$)'</span>);</span><br><span class="line">      obj.className = obj.className.replace(reg, <span class="string">' '</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/20/20150820/" rel="next" title="移动端触摸移动小demo">
+                <i class="fa fa-chevron-left"></i> 移动端触摸移动小demo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/10/20151010/" rel="prev" title="hexo常用命令">
+                hexo常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="U_can" />
+          <p class="site-author-name" itemprop="name">U_can</p>
+           
+              <p class="site-description motion-element" itemprop="description">Be a good girl!!!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/U-can/" target="_blank" title="cnblogs">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  cnblogs
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/U_can" target="_blank" title="Codding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Codding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhangxinxu.com" title="张鑫旭个人博客" target="_blank">张鑫旭个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/PeunZhang/" title="白树个人博客" target="_blank">白树个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美博客" target="_blank">司徒正美博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/yexiaochai/" title="叶小钗博客" target="_blank">叶小钗博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">U_can</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

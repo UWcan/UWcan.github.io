@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="css," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="啦啦啦，欢迎光临" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="昨天拿到设计稿后，发现设计师设计的边框阴影比较特别，我平常没有接触过。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="box-shadow与transform属性的应用">
+<meta property="og:url" content="http://yoursite.com/2015/07/27/20150727/index.html">
+<meta property="og:site_name" content="啦啦啦，欢迎光临">
+<meta property="og:description" content="昨天拿到设计稿后，发现设计师设计的边框阴影比较特别，我平常没有接触过。">
+<meta property="og:image" content="http://yoursite.com/uploads/artical_img/2015072701.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/artical_img/2015072702.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/artical_img/2015072703.jpg">
+<meta property="og:updated_time" content="2017-05-23T02:02:11.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="box-shadow与transform属性的应用">
+<meta name="twitter:description" content="昨天拿到设计稿后，发现设计师设计的边框阴影比较特别，我平常没有接触过。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/07/27/20150727/"/>
+
+
+
+
+  <title> box-shadow与transform属性的应用 | 啦啦啦，欢迎光临 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啦啦啦，欢迎光临</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/27/20150727/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="U_can">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啦啦啦，欢迎光临">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                box-shadow与transform属性的应用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-27T18:39:00+08:00">
+                2015-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端分享/" itemprop="url" rel="index">
+                    <span itemprop="name">前端分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>昨天拿到设计稿后，发现设计师设计的边框阴影比较特别，我平常没有接触过。<br><a id="more"></a><br>设计稿如下：<br><img src="/uploads/artical_img/2015072701.jpg" alt="示意图1"><br>所以一开始我是直接切图和把边框当做背景来使用。等把页面全部做来后，我在网上搜了box-shadow相关方面的文章，发现还是有很多牛人总结了。下面就是我学习后的结果。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"fans"</span>&gt;            </span><br><span class="line">    &lt;ul class=<span class="string">"fans-ul"</span>&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img class=<span class="string">"lazy"</span> src=<span class="string">"img/fans_1.jpg"</span>&gt;</span><br><span class="line">            &lt;span&gt;最爱自己的修复精华霜了，已经用了一个大学时期了~&lt;/span&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img class=<span class="string">"lazy "</span> src=<span class="string">"img/fans_2.jpg"</span>&gt;</span><br><span class="line">            &lt;span&gt;生完宝宝后，闺蜜给推荐的这款五谷面膜，很温和，也不会刺激皮肤。&lt;/span&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img class=<span class="string">"lazy"</span> src=<span class="string">"img/fans_3.jpg"</span>&gt;</span><br><span class="line">            &lt;span&gt;<span class="number">3</span>个月前开始用美白套装，皮肤不仅白了，而且充满弹性！现在拍素颜照也无压力！&lt;/span&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=<span class="string">"zsyh"</span>&gt;</span><br><span class="line">    &lt;img class=<span class="string">"lazy"</span> src=<span class="string">"img/zsyh_1.jpg"</span>/&gt;</span><br><span class="line">    &lt;p&gt;婚后女人，不注意保养，老的更快！我一直都是用瓷肌的抑黑焕白美白套装哦，滋润+美白，每晚也就花<span class="number">10</span>几分钟的时间用一下，皮肤一直都是比同年龄人要好，老公也说我现在还是嫩得像少女一样呢~&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>阴影主要结合:after和:before,transform这几个元素。</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">.fans-ul&#123;           </span><br><span class="line">        width:<span class="number">100</span>%;</span><br><span class="line">        display: flex;/*这里采用flexbox布局，水平居中的<span class="number">3</span>列图文*/</span><br><span class="line">        display: -webkit-flex;</span><br><span class="line">        justify-content:space-between ;    /*让子容器两端对齐，两两之间的间距相等*/</span><br><span class="line">    &#125;</span><br><span class="line"> /*阴影一效果*/</span><br><span class="line">.fans-ul li&#123; </span><br><span class="line">display: -webkit-box;/*给子元素设置display：box，采用兼容浏览器写法*/</span><br><span class="line"> margin:<span class="number">0</span> <span class="number">5</span>px;</span><br><span class="line"> padding: <span class="number">5</span>px;</span><br><span class="line"> border: <span class="number">1</span>px solid <span class="comment">#CCCCCC; /*添加阴影效果*/ </span></span><br><span class="line">box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.3</span>);</span><br><span class="line"> -webkit-flex: <span class="number">1</span>; </span><br><span class="line">align-items: center; </span><br><span class="line">position: relative;</span><br><span class="line"> background: <span class="comment">#ededed;/*这个背景颜色挺重要的，如果设置不合理，就不能盖住隐藏的部分*/</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> .fans-ul li:before,</span><br><span class="line"> .fans-ul li:after, </span><br><span class="line">.zsyh:after&#123; position: absolute; z-index: -<span class="number">1</span>; &#125;</span><br><span class="line">.fans-ul li:before&#123;</span><br><span class="line"> content: <span class="string">""</span>; </span><br><span class="line">width: <span class="number">50</span>%; </span><br><span class="line">height: <span class="number">10</span>px; </span><br><span class="line">left: <span class="number">0</span>; </span><br><span class="line">top: <span class="number">100</span>%;</span><br><span class="line"> box-shadow: <span class="number">0</span>px <span class="number">0</span>px <span class="number">20</span>px <span class="number">10</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>); /*参数经过漫长的调整*/</span><br><span class="line">-webkit-transform:skew(<span class="number">0</span>,-<span class="number">10</span>deg) translate(<span class="number">21</span>px,-<span class="number">23</span>px); </span><br><span class="line">transform: skew(-<span class="number">5</span>deg,-<span class="number">10</span>deg) translate(<span class="number">14</span>px,-<span class="number">16</span>px);</span><br><span class="line"> &#125;</span><br><span class="line">.fans-ul li:after&#123;</span><br><span class="line">content:<span class="string">""</span>; </span><br><span class="line">width: <span class="number">50</span>%; </span><br><span class="line">height: <span class="number">10</span>px;</span><br><span class="line">right: <span class="number">0</span>; </span><br><span class="line">top: <span class="number">100</span>%; </span><br><span class="line">box-shadow: <span class="number">0</span>px <span class="number">0</span>px <span class="number">20</span>px <span class="number">10</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>); </span><br><span class="line">-webkit-transform: skew(<span class="number">5</span>deg,<span class="number">10</span>deg) translate(-<span class="number">14</span>px,-<span class="number">16</span>px);</span><br><span class="line">transform: skew(<span class="number">5</span>deg,<span class="number">10</span>deg) translate(-<span class="number">14</span>px,-<span class="number">16</span>px);</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">/*阴影效果二*/</span><br><span class="line">.zsyh&#123;</span><br><span class="line">padding: <span class="number">5</span>px;</span><br><span class="line">font-size: <span class="number">0.75</span>em</span><br><span class="line">;border: <span class="number">1</span>px solid <span class="comment">#ccc;</span></span><br><span class="line">color: <span class="comment">#444444;</span></span><br><span class="line">margin: <span class="number">0</span> <span class="number">15</span>px <span class="number">40</span>px <span class="number">15</span>px;</span><br><span class="line">border: <span class="number">1</span>px solid <span class="comment">#EDEDED;</span></span><br><span class="line"> box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.3</span>); </span><br><span class="line">background: <span class="comment">#ededed; position: relative; </span></span><br><span class="line">&#125; </span><br><span class="line">.zsyh:after&#123; </span><br><span class="line">content: <span class="string">""</span>;</span><br><span class="line"> width: <span class="number">80</span>%; </span><br><span class="line">height: <span class="number">15</span>px;</span><br><span class="line"> left: <span class="number">0</span>;</span><br><span class="line"> bottom: -<span class="number">15</span>px; </span><br><span class="line">box-shadow: <span class="number">0</span>px <span class="number">15</span>px <span class="number">15</span>px <span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.6</span>);</span><br><span class="line"> transform-origin: <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line">-webkit-transform: skew(-<span class="number">5</span>deg,-<span class="number">10</span>deg) translate(<span class="number">20</span>px,-<span class="number">9</span>px); </span><br><span class="line">transform: skew(-<span class="number">5</span>deg,-<span class="number">2</span>deg) translate(<span class="number">5</span>px,-<span class="number">19</span>px);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>阴影效果一：<br><img src="/uploads/artical_img/2015072702.jpg" alt="示意图2"></p>
+<p>阴影效果二：<br><img src="/uploads/artical_img/2015072703.jpg" alt="示意图3"></p>
+<p>虽然和设计图比还是有点差距，但是如果在计算精确一点，我觉得肯定能把阴影效果实现得更好。<br>对css3的学习还在继续，不断摸索中。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/13/20150613/" rel="next" title="git命令使用笔记">
+                <i class="fa fa-chevron-left"></i> git命令使用笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/30/20150730/" rel="prev" title="flexbox布局使用总结">
+                flexbox布局使用总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="U_can" />
+          <p class="site-author-name" itemprop="name">U_can</p>
+           
+              <p class="site-description motion-element" itemprop="description">Be a good girl!!!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/U-can/" target="_blank" title="cnblogs">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  cnblogs
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/U_can" target="_blank" title="Codding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Codding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhangxinxu.com" title="张鑫旭个人博客" target="_blank">张鑫旭个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/PeunZhang/" title="白树个人博客" target="_blank">白树个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美博客" target="_blank">司徒正美博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/yexiaochai/" title="叶小钗博客" target="_blank">叶小钗博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">U_can</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

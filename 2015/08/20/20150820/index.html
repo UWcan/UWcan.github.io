@@ -1,0 +1,788 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="啦啦啦，欢迎光临" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="根据项目需要自己尝试做了一个div块的触摸移动效果，用原生js写的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端触摸移动小demo">
+<meta property="og:url" content="http://yoursite.com/2015/08/20/20150820/index.html">
+<meta property="og:site_name" content="啦啦啦，欢迎光临">
+<meta property="og:description" content="根据项目需要自己尝试做了一个div块的触摸移动效果，用原生js写的。">
+<meta property="og:image" content="http://yoursite.com/uploads/artical_img/2015082001.gif">
+<meta property="og:image" content="http://yoursite.com/uploads/artical_img/2015082002.jpg">
+<meta property="og:updated_time" content="2017-05-23T01:37:06.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端触摸移动小demo">
+<meta name="twitter:description" content="根据项目需要自己尝试做了一个div块的触摸移动效果，用原生js写的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/20/20150820/"/>
+
+
+
+
+  <title> 移动端触摸移动小demo | 啦啦啦，欢迎光临 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啦啦啦，欢迎光临</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/20/20150820/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="U_can">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啦啦啦，欢迎光临">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                移动端触摸移动小demo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-20T16:52:00+08:00">
+                2015-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端分享/" itemprop="url" rel="index">
+                    <span itemprop="name">前端分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>根据项目需要自己尝试做了一个div块的触摸移动效果，用原生js写的。</p>
+</blockquote>
+<a id="more"></a>
+<p>效果如下：<br><img src="/uploads/artical_img/2015082001.gif" alt="示意图1"></p>
+<p>页面的html文档：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;   </span><br><span class="line">&lt;head&gt;   </span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt; </span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"</span> /&gt;</span><br><span class="line">    &lt;title&gt;拖动Demo&lt;/title&gt;</span><br><span class="line">    &lt;style <span class="built_in">type</span>=<span class="string">"text/Css"</span>&gt;</span><br><span class="line">    body&#123;padding: <span class="number">0</span>;margin: <span class="number">0</span>;&#125;       </span><br><span class="line">        .dragme&#123;z-index:<span class="number">9999</span>;position:fixed;top:<span class="number">30</span>px;right: <span class="number">5</span>px;background:url(<span class="string">'img/testbg.png'</span>) no-repeat;background-size:cover;width:<span class="number">80</span>px;height:<span class="number">80</span>px;&#125;   </span><br><span class="line">    &lt;/style&gt;   </span><br><span class="line"></span><br><span class="line">&lt;/head&gt;   </span><br><span class="line">&lt;body&gt;   </span><br><span class="line">     &lt;div id=<span class="string">"moveid"</span>  class=<span class="string">"dragme"</span>&gt;  &lt;/div&gt;  </span><br><span class="line">    &lt;div style=<span class="string">"height: 1000px;background: pink;"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"js/dragFun.js"</span> &gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt; </span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中这行<code>&lt;div style=&quot;height: 1000px;background: pink;&quot;&gt;&lt;/div&gt;</code>非常重要（单就这个demo来说），如果缺少这行代码，那么图片只能拖动一次，再次触摸拖动就失效了，这应该是和文档的高度有关。<br>js/dragFun.js实现原理分析：</p>
+<ol>
+<li>需要知道开始触摸时手指的初始位置（clientX、clientY）</li>
+<li>滑动过程中需要记录下手指的位置</li>
+<li>手指离开屏幕时根据边界判断确定div的位置</li>
+<li>边界判断是重点</li>
+<li>滑块的移动改变的是transform：translate（x,y)；</li>
+</ol>
+<p>示意图：<br><img src="/uploads/artical_img/2015082002.jpg" alt="示意图2"><br>我分为两部分判断：<br>初始值：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var dragElem=document.getElementById(id) || document.querySelector(<span class="string">'.'</span>+elemName),</span><br><span class="line">        tempX=<span class="number">0</span>,</span><br><span class="line">        tempY=<span class="number">0</span>,</span><br><span class="line">        startX,</span><br><span class="line">        startY,</span><br><span class="line">        dirX,</span><br><span class="line">        dirY;</span><br><span class="line">var clientW=document.documentElement.clientWidth,</span><br><span class="line">    clientH=document.documentElement.clientHeight,</span><br><span class="line">    eleW=dragElem.offsetWidth,</span><br><span class="line">    eleH=dragElem.offsetHeight,</span><br><span class="line">    offset_l=dragElem.offsetLeft,</span><br><span class="line">    offset_t=dragElem.offsetTop;</span><br></pre></td></tr></table></figure></p>
+<p>大方向：<br>1、 div初始位置在右边<br>1.1 一屏幕的中心线区分<br>1.1.1 屏幕的右侧（1/2W范围内）去除掉y轴方向的上方eleH和下方的eleH（也就是右边上下黄线包围的范围）<br>　　　如果他超出了屏幕右边界，那么X的最大偏移值为（clientW-offset_l-eleW）；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(offset_l&gt;clientW/<span class="number">2</span>)&#123;//div的初始位置在屏幕右侧</span><br><span class="line">    <span class="keyword">if</span>(dirX&gt;-(clientW/<span class="number">2</span>-eleW/<span class="number">2</span>) &amp;&amp; dirY&gt;-offset_t &amp;&amp; dirY&lt;clientH-(eleH+offset_t))&#123;</span><br><span class="line">        dirX=clientW-offset_l-eleW;</span><br><span class="line">     &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.1.2 屏幕的左侧（1/2W范围内）去除掉y轴方向的上方eleH和下方的eleH（也就是左边上下黄线包围的范围）<br>　　　如果他超出了屏幕左边界，那么X的最大偏移值为-(clientW-eleW)；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(offset_l&gt;clientW/<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(dirX&lt;-(clientW/<span class="number">2</span>-eleW/<span class="number">2</span>) &amp;&amp; dirY&gt;-offset_t &amp;&amp; dirY&lt;clientH-(eleH+offset_t))&#123;</span><br><span class="line">       dirX=-(clientW-eleW);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.1.3 屏幕剩余的上下eleH部分（上黄线与顶部、下黄线与底部包围的区域，它的高度是div的高）<br>　　　因为之前我没有对这个区域做判断，所在在测试的时候，如果把div拖到四个边角，超出范围后，他就会消失不见，不会再弹回边界，所以我才知道我忘记判断了，判断如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dirX&gt;=clientW-offset_l-eleW)&#123;</span><br><span class="line">     dirX=clientW-offset_l-eleW;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(dirX&lt;=-(clientW-eleW))&#123;</span><br><span class="line">     dirX=-(clientW-eleW);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、 div初始位置在左边（与上面的判断差不多主要是注意位移偏移量的大小，方向，正负）</p>
+<p>3、 y轴方向的判断不用区分左右边，只需一次判断即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dirY&lt;=-offset_t)&#123;</span><br><span class="line">     dirY=-offset_t;    </span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(dirY&gt;=clientH-(eleH+offset_t))&#123;</span><br><span class="line">     dirY=clientH-(eleH+offset_t);                </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4、 如果想让div块释放的时候有缓动效果，就给它加个transition属性</p>
+<p>这个也得注意一下，在div块刚刚触摸时，得设置transition的duration为0s（单位不能少哦），不然拖动的过程会很慢，只需要在释放后再加上就可以啦。</p>
+<p>整个过程就这样子结束啦，做完后想想还是挺容易的，就是在判断的时候花费了点时间。不过过程还是学到了很多。</p>
+<p><a href="https://coding.net/u/U_can/p/mobieDragDemo/git" target="_blank" rel="external">上完整代码</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/30/20150730/" rel="next" title="flexbox布局使用总结">
+                <i class="fa fa-chevron-left"></i> flexbox布局使用总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/22/20150822/" rel="prev" title="JavaScript之tab面板切换">
+                JavaScript之tab面板切换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="U_can" />
+          <p class="site-author-name" itemprop="name">U_can</p>
+           
+              <p class="site-description motion-element" itemprop="description">Be a good girl!!!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/U-can/" target="_blank" title="cnblogs">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  cnblogs
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/U_can" target="_blank" title="Codding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Codding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhangxinxu.com" title="张鑫旭个人博客" target="_blank">张鑫旭个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/PeunZhang/" title="白树个人博客" target="_blank">白树个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美博客" target="_blank">司徒正美博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/yexiaochai/" title="叶小钗博客" target="_blank">叶小钗博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">U_can</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
